@@ -11,7 +11,6 @@ class Onebox::Engine::FreesoundOnebox
   include Onebox::Engine
   include StandardEmbed
 
-  # matches_regexp /^https?:\/\/www\.freesound\.org\/people(\/?([a-zA-Z0-9]-_))+\/(\d+)\/?(\?.*)?$/
   matches_regexp /^https?:\/\/www\.freesound\.org\/people\/.+\/(\d+)\/?(\?.*)?$/
 
   def wave_image_url

@@ -1,6 +1,9 @@
 # name: Freesound Onebox
 # version: 0.1
 # authors: scossar
+# url: https://github.com/scossar/freesound-onebox
+
+enabled_site_setting :freesound_onebox_enabled
 
 register_asset 'stylesheets/freesound-styles.scss'
 

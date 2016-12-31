@@ -1,4 +1,5 @@
 # name: Freesound Onebox
+# about: Adds a Freesound Onebox to Discourse
 # version: 0.1
 # authors: scossar
 # url: https://github.com/scossar/freesound-onebox
@@ -6,6 +7,13 @@
 enabled_site_setting :freesound_onebox_enabled
 
 register_asset 'stylesheets/freesound-styles.scss'
+register_asset 'audiojs/audio.js'
+register_asset 'audiojs/audio.swf'
+register_asset 'audiojs/player-graphics.gif'
+
+PLUGIN_NAME = 'freesound_onebox'.freeze
+
+# register_asset 'public/javascripts/audiojs/audio.js'
 
 class Onebox::Engine::FreesoundOnebox
   include Onebox::Engine

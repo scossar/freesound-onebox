@@ -1,0 +1,4 @@
+plugins:
+  freesound_onebox_enabled:
+    default: true
+    client: true

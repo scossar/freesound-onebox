@@ -21,6 +21,10 @@ class Onebox::Engine::FreesoundOnebox
 
   matches_regexp /^https?:\/\/www\.freesound\.org\/people\/.+\/(\d+)\/?(\?.*)?$/
 
+  def id
+    matches
+  end
+
   def wave_image_url
     raw[:audio].gsub(/-lq.mp3/, '_wave_L.png').gsub(/previews/, 'displays').gsub(/http:/, 'https:')
   end
@@ -36,9 +40,25 @@ class Onebox::Engine::FreesoundOnebox
         <h3>View on Freesound: <a href="#{raw[:url]}">#{raw[:audio_title]}</a></h3>
         <img class="freesound-waveform" src="#{wave_image_url}">
         <div class="freesound-audio-controls">
+        <div class="audiojs" classname="audiojs" id="#{(Time.now.to_f * 1000).to_i}">
         <audio controls>
             <source src="#{audio_src}" type="audio/mpeg">
         </audio>
+        <div class="play-pause">
+        <p class="play"></p>
+        <p class="pause"></p>
+        <p class="loading"></p>
+        <p class="error"></p>
+        </div>
+        <div class="scrubber">
+        <div class="progress" style="width: 0%;"></div>
+        <div class="loaded" style="width: 100%;"></div>
+        </div>
+        <div class="time">
+        <em class="played">00:00</em>/<strong class="duration">00:00</strong>
+        </div>
+        <div class="error-message"></div>
+        </div>
         </div>
         </div>
     </aside>

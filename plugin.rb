@@ -7,9 +7,10 @@
 enabled_site_setting :freesound_onebox_enabled
 
 register_asset 'stylesheets/freesound-styles.scss'
-register_asset 'audiojs/audio.js'
-register_asset 'audiojs/audio.swf'
-register_asset 'audiojs/player-graphics.gif'
+register_asset 'howler.js/dist/howler.js'
+# register_asset 'audiojs/audio.js'
+# register_asset 'audiojs/audio.swf'
+# register_asset 'audiojs/player-graphics.gif'
 
 PLUGIN_NAME = 'freesound_onebox'.freeze
 
@@ -34,6 +35,46 @@ class Onebox::Engine::FreesoundOnebox
   end
 
   def to_html
+    <<HTML
+    <aside class="onebox freesound-onebox" data-audio-src="#{audio_src}">
+      <script src="/plugins/Freesound_Onebox/javascripts/freesound-audio.js"></script>
+      <div class="freesound-title">
+        <span class="freesound-track">#{raw[:audio_title]}</span>
+        <div class="freesound-timer">0:00</div>
+        <div class="freesound-duration">0:00</div>
+      </div>
+      <div class="freesound-waveform" style="background-image: url(#{wave_image_url});">
+      </div>
+    
+      <!-- Controls -->
+      <div class="controlsOuter">
+        <div class="controlsInner">
+          <div class="freesound-loading"></div>
+          <div class="freesound-btn play-btn"></div>
+          <div class="freesound-btn pause-btn"></div>
+          <div class="freesound-btn prev-btn"></div>
+          <div class="freesound-btn next-btn"></div>
+        </div>
+        <div class="freesound-btn playlist-btn"></div>
+        <div class="freesound-btn volume-btn"></div>
+      </div>
+    
+      <!-- Progress -->
+      <div class="freesound-waveform"></div>
+      <div class="freesound-progress-bar"></div>
+      <div class="freesound-progress"></div>
+    
+      <!-- Volume -->
+      <div class="freesound-volume fadeout">
+        <div class="freesound-barFull bar"></div>
+        <div class="freesound-barEmpty bar"></div>
+        <div class="freesound-slider-btn"></div>
+      </div>
+    </aside>
+HTML
+  end
+
+  def to_html_bac
     <<HTML
     <aside class="onebox freesound-onebox">
         <div class="freesound-content">

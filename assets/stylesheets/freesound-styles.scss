@@ -96,8 +96,8 @@ aside.freesound-onebox {
 .freesound-progress {
   position: absolute;
   height: 100%;
-  border-right: 1px solid rgba(255,255,255,0.45);
-  color: transparent;
+  border-right: 1px solid rgba(224, 98, 98, 0.45);
+  background-color: rgba(224, 98, 98, 0.25);
   width: 0%;
 }
 
@@ -123,8 +123,8 @@ aside.freesound-onebox {
 }
 
 .freesound-btn {
-  height: 15px;
-  width: 15px;
+  height: 14px;
+  width: 14px;
   display: none;
   background-color: #000000;
   background-size: contain;

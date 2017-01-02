@@ -8,7 +8,6 @@ enabled_site_setting :freesound_onebox_enabled
 
 register_asset 'stylesheets/freesound-styles.scss'
 register_asset 'howler.js/dist/howler.js'
-# register_asset 'freesound-audio.js'
 
 PLUGIN_NAME = 'freesound_onebox'.freeze
 

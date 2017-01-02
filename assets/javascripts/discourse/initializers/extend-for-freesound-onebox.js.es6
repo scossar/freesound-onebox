@@ -90,6 +90,7 @@ const initializeFreesound = function ($elem) {
           requestAnimationFrame(step);
         },
         onend: function () {
+          console.log('ended');
           $freesoundProgress.css({
             'width': 0
           });

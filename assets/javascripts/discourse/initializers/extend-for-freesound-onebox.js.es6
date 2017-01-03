@@ -65,10 +65,6 @@ const initializeFreesound = function ($elem) {
       newPosition = chosenLocation * sampleDuration / waveWidth;
 
       sounds[currentSound].seek(newPosition);
-
-      if (!sounds[currentSound].playing()) {
-        sounds[currentSound].play();
-      }
     }
   });
 
@@ -98,8 +94,6 @@ const initializeFreesound = function ($elem) {
           sampleDuration = sounds[currentSound].duration() || 0;
           $durationDisplay.html(formatTime(Math.round(sampleDuration)));
           requestAnimationFrame(step);
-          $playButton.removeClass('active');
-          $pauseButton.addClass('active');
         },
         onend: function () {
           $freesoundProgress.css({
@@ -113,9 +107,8 @@ const initializeFreesound = function ($elem) {
     }
 
     sounds[currentSound].play();
-    $freesoundLoading.addClass('loading');
-    // $playButton.removeClass('active');
-    // $pauseButton.addClass('active');
+    $playButton.removeClass('active');
+    $pauseButton.addClass('active');
 
   });
 

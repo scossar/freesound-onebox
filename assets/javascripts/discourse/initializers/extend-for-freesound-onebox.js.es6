@@ -9,6 +9,7 @@ const initializeFreesound = function ($elem) {
     sampleDuration,
     $pauseButton,
     $playButton,
+    $freesoundLoading,
     $timerDisplay,
     $durationDisplay,
     $freesoundProgress,
@@ -26,7 +27,7 @@ const initializeFreesound = function ($elem) {
 
     if (currentSound && sounds.hasOwnProperty(currentSound) && $timerDisplay) {
       seek = sounds[currentSound].seek() || 0;
-      $timerDisplay.html(formatTime(Math.round(seek)));
+      $timerDisplay.html(formatTime(Math.round(seek)) + '<span class="freesound-time-divider"> / </span>');
 
       if (sounds[currentSound].playing()) {
         requestAnimationFrame(step);
@@ -42,6 +43,7 @@ const initializeFreesound = function ($elem) {
     audioSrc = $('#freesound-onebox-' + playerID).data('audio-src');
     $playButton = $('#freesound-play-' + playerID);
     $pauseButton = $('#freesound-pause-' + playerID);
+    $freesoundLoading = $('#freesound-loading-' + playerID);
     $timerDisplay = $('#freesound-timer-' + playerID);
     $freesoundProgress = $('#freesound-progress-' + playerID);
     $freesoundCurrentWave = $('#freesound-wave-' + playerID);
@@ -63,6 +65,10 @@ const initializeFreesound = function ($elem) {
       newPosition = chosenLocation * sampleDuration / waveWidth;
 
       sounds[currentSound].seek(newPosition);
+
+      if (!sounds[currentSound].playing()) {
+        sounds[currentSound].play();
+      }
     }
   });
 
@@ -84,10 +90,16 @@ const initializeFreesound = function ($elem) {
       sounds[currentSound] = new Howl({
         src: audioSrc,
         html5: true,
+        onload: function () {
+          $freesoundLoading.removeClass('loading');
+          $freesoundLoading.addClass('loaded');
+        },
         onplay: function () {
           sampleDuration = sounds[currentSound].duration() || 0;
           $durationDisplay.html(formatTime(Math.round(sampleDuration)));
           requestAnimationFrame(step);
+          $playButton.removeClass('active');
+          $pauseButton.addClass('active');
         },
         onend: function () {
           $freesoundProgress.css({
@@ -101,8 +113,9 @@ const initializeFreesound = function ($elem) {
     }
 
     sounds[currentSound].play();
-    $playButton.removeClass('active');
-    $pauseButton.addClass('active');
+    $freesoundLoading.addClass('loading');
+    // $playButton.removeClass('active');
+    // $pauseButton.addClass('active');
 
   });
 

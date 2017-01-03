@@ -33,7 +33,7 @@ class Onebox::Engine::FreesoundOnebox
     <<HTML
     <aside class="onebox freesound-onebox" data-audio-src="#{audio_src}" id="freesound-onebox-#{onebox_id}" data-player-id="#{onebox_id}">
       <div class="freesound-title">
-        <h3 class="freesound-track" id="freesound-track-#{onebox_id}">View on Freesound: <a href="#{raw[:url]}">#{raw[:audio_title]}</a></h3>
+        <h3 class="freesound-track" id="freesound-track-#{onebox_id}">View on Freesound <a href="#{raw[:url]}">#{raw[:title]}</a></h3>
       </div>
       <div class="wrapper">
         <div class="freesound-wave" id="freesound-wave-#{onebox_id}" style="background-image: url(#{wave_image_url});">
@@ -44,8 +44,8 @@ class Onebox::Engine::FreesoundOnebox
         <div class="freesound-loading" id="freesound-loading-#{onebox_id}"></div>
         <div class="freesound-btn freesound-play-btn active" id="freesound-play-#{onebox_id}" data-player-id="#{onebox_id}"></div>
         <div class="freesound-btn freesound-pause-btn" id="freesound-pause-#{onebox_id}" data-player-id="#{onebox_id}"></div>
-        <div class="freesound-timer" id="freesound-timer-#{onebox_id}">0:00</div>
         <div class="freesound-duration" id="freesound-duration-#{onebox_id}"></div>
+        <div class="freesound-timer" id="freesound-timer-#{onebox_id}">0:00</div>
       </div>
     </div>
   </div>

@@ -41,9 +41,9 @@ class Onebox::Engine::FreesoundOnebox
       </div>
       <div class="freesound-controls-outer">
         <div class="freesound-controls-inner">
+        <div class="freesound-loading" id="freesound-loading-#{onebox_id}"></div>
         <div class="freesound-btn freesound-play-btn active" id="freesound-play-#{onebox_id}" data-player-id="#{onebox_id}"></div>
         <div class="freesound-btn freesound-pause-btn" id="freesound-pause-#{onebox_id}" data-player-id="#{onebox_id}"></div>
-        <div class="freesound-loading"></div>
         <div class="freesound-timer" id="freesound-timer-#{onebox_id}">0:00</div>
         <div class="freesound-duration" id="freesound-duration-#{onebox_id}"></div>
       </div>

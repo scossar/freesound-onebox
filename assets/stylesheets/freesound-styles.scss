@@ -86,6 +86,10 @@ aside.freesound-onebox {
   position: relative;
 }
 
+.current-wave {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 900px) {
   .freesound-wave {
     max-width: 666px;
@@ -113,7 +117,7 @@ aside.freesound-onebox {
   margin-right: 8px;
   border-top: 4px groove #333333;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 22px;
 }
 
 .freesound-controls-inner:after {
@@ -123,8 +127,8 @@ aside.freesound-onebox {
 }
 
 .freesound-btn {
-  height: 14px;
-  width: 14px;
+  height: 22px;
+  width: 22px;
   display: none;
   background-color: #000000;
   background-size: contain;

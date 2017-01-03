@@ -27,12 +27,12 @@ const initializeFreesound = function ($elem) {
     if (currentSound && sounds.hasOwnProperty(currentSound) && $timerDisplay) {
       seek = sounds[currentSound].seek() || 0;
       $timerDisplay.html(formatTime(Math.round(seek)));
-      $freesoundProgress.css({
-        'width': ((seek / sampleDuration) * 100) + '%'
-      });
 
       if (sounds[currentSound].playing()) {
         requestAnimationFrame(step);
+        $freesoundProgress.css({
+          'width': ((seek / sampleDuration) * 100) + '%'
+        });
       }
     }
   }

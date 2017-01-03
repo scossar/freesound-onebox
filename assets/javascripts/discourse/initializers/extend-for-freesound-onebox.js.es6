@@ -107,6 +107,7 @@ const initializeFreesound = function ($elem) {
     }
 
     sounds[currentSound].play();
+    $freesoundLoading.addClass('loading');
     $playButton.removeClass('active');
     $pauseButton.addClass('active');
 
